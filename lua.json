@@ -1,0 +1,1123 @@
+{
+	"require": {
+		"prefix": "nk",
+		"body": "local nk = require(nakama)",
+	},
+	"account_delete_id": {
+		"prefix": "nk.account_delete_id",
+		"body": "nk.account_delete_id(${1:user_id}, ${2|true,false|})",
+		"description": "Delete an account by user ID"
+	},
+	"account_export_id": {
+		"prefix": "nk.account_export_id",
+		"body": "local account_data = nk.account_export_id(${1:user_id})",
+		"description": "Export account information for a specified user ID"
+	},
+	"account_get_id": {
+		"prefix": "nk.account_get_id",
+		"body": "local account = nk.account_get_id(${1:user_id})",
+		"description": "Fetch account information by user ID"
+	},
+	"accounts_get_id": {
+		"prefix": "nk.accounts_get_id",
+		"body": "local accounts = nk.accounts_get_id(${1:user_ids})",
+		"description": "Fetch information for multiple accounts by user IDs"
+	},
+	"account_update_id": {
+		"prefix": "nk.account_update_id",
+		"body": "nk.account_update_id(${1:user_ids}, ${2:{metadata}}, ${3:username}, ${4:display_name}, ${5:timezone}, ${6:location}, ${7:language}, ${8:avatar_url})",
+		"description": "Update an account by user ID"
+	},
+	"authenticate_apple": {
+		"prefix": "nk.authenticate_apple",
+		"body": "local user_id, username, created = nk.authenticate_apple(${1:token}, ${2:username}, ${3|true,false|})",
+		"description": "Authenticate user and create a session token using an Apple sign in token"
+	},
+	"authenticate_custom": {
+		"prefix": "nk.authenticate_custom",
+		"body": "local user_id, username, created = nk.authenticate_custom(${1:id}, ${2:username}, ${3|true,false|})",
+		"description": "Authenticate user and create a session token using a custom authentication managed by an external service or source not already supported by Nakama"
+	},
+	"authenticate_device": {
+		"prefix": "nk.authenticate_device",
+		"body": "local user_id, username, created = nk.authenticate_device(${1:id}, ${2:username}, ${3|true,false|})",
+		"description": "Authenticate user and create a session token using a device identifier"
+	},
+	"authenticate_email": {
+		"prefix": "nk.authenticate_email",
+		"body": "local user_id, username, created = nk.authenticate_email(${1:email}, ${2:password}, ${3:username}, ${4|true,false|})",
+		"description": "Authenticate user and create a session token using an email address and password"
+	},
+	"authenticate_facebook": {
+		"prefix": "nk.authenticate_facebook",
+		"body": "local user_id, username, created = nk.authenticate_facebook(${1:token}, ${2|true,false|}, ${3:username}, ${4|true,false|})",
+		"description": "Authenticate user and create a session token using a Facebook account token"
+	},
+	"authenticate_facebook_instant_game": {
+		"prefix": "nk.authenticate_facebook_instant_game",
+		"body": "local user_id, username, created = nk.authenticate_facebook_instant_game(${1:player_info}, ${2:username}, ${3|true,false|})",
+		"description": "Authenticate user and create a session token using a Facebook Instant Game"
+	},
+	"authenticate_game_center": {
+		"prefix": "nk.authenticate_game_center",
+		"body": "local user_id, username, created = nk.authenticate_game_center(${1:player_id}, ${2:bundle_id}, ${3:timestamp}, ${4:salt}, ${5:signature}, ${6:public_key_url}, ${7:username}, ${8|true,false|})",
+		"description": "Authenticate user and create a session token using Apple Game Center credentials"
+	},
+	"authenticate_google": {
+		"prefix": "nk.authenticate_google",
+		"body": "local user_id, username, created = nk.authenticate_google(${1:token}, ${2:username}, ${3|true,false|})",
+		"description": "Authenticate user and create a session token using a Google ID token"
+	},
+	"authenticate_steam": {
+		"prefix": "nk.authenticate_steam",
+		"body": "local user_id, username, created = nk.authenticate_steam(${1:token}, ${2:username}, ${3|true,false|}, ${4|true,false|})",
+		"description": "Authenticate user and create a session token using a Steam account token"
+	},
+	"authenticate_token_generate": {
+		"prefix": "nk.authenticate_token_generate",
+		"body": "local token, exp = nk.authenticate_token_generate(${1:user_id}, ${2:username}, ${3:expirte_at}, ${4:{vars}})",
+		"description": "Generate a Nakama session token from a user ID"
+	},
+	"link_apple": {
+		"prefix": "nk.link_apple",
+		"body": "nk.link_apple(${1:user_id}, ${2:token})",
+		"description": "Link Apple authentication to a user ID"
+	},
+	"link_custom": {
+		"prefix": "nk.link_custom",
+		"body": "nk.link_custom(${1:user_id}, ${2:custom_id})",
+		"description": "Link custom authentication to a user ID"
+	},
+	"link_device": {
+		"prefix": "nk.link_device",
+		"body": "nk.link_device(${1:user_id}, ${2:device_id})",
+		"description": "Link device authentication to a user ID"
+	},
+	"link_email": {
+		"prefix": "nk.link_email",
+		"body": "nk.link_email(${1:user_id}, ${2:email}, ${3:password})",
+		"description": "Link email authentication to a user ID"
+	},
+	"link_facebook": {
+		"prefix": "nk.link_facebook",
+		"body": "nk.link_facebook(${1:user_id}, ${2:username}, ${3:token}, ${4|true,false|})",
+		"description": "Link Facebook authentication to a user ID"
+	},
+	"link_facebook_instant_game": {
+		"prefix": "nk.link_facebook_instant_game",
+		"body": "nk.link_facebook_instant_game(${1:user_id}, ${2:player_info}, ${3|true,false|})",
+		"description": "Link Facebook Instant Game authentication to a user ID"
+	},
+	"link_gamecenter": {
+		"prefix": "nk.link_gamecenter",
+		"body": "nk.link_gamecenter(${1:user_id}, ${2:player_id}, ${3:bundle_id}, ${4:timestamp}, ${5:salt}, ${6:signature}, ${6:public_key_url})",
+		"description": "Link Apple Game Center authentication to a user ID"
+	},
+	"link_google": {
+		"prefix": "nk.link_google",
+		"body": "nk.link_google(${1:user_id}, ${3:token})",
+		"description": "Link Google authentication to a user ID"
+	},
+	"link_steam": {
+		"prefix": "nk.link_steam",
+		"body": "nk.link_steam(${1:user_id}, ${2:username}, ${3:token}, ${4|true,false|})",
+		"description": "Link Steam authentication to a user ID"
+	},
+	"unlink_apple": {
+		"prefix": "nk.unlink_apple",
+		"body": "nk.unlink_apple(${1:user_id}, ${2:token})",
+		"description": "Unlink Apple authentication to a user ID"
+	},
+	"unlink_custom": {
+		"prefix": "nk.unlink_custom",
+		"body": "nk.unlink_custom(${1:user_id}, ${2:custom_id})",
+		"description": "Unlink custom authentication to a user ID"
+	},
+	"unlink_device": {
+		"prefix": "nk.unlink_device",
+		"body": "nk.unlink_device(${1:user_id}, ${2:device_id})",
+		"description": "Unlink device authentication to a user ID"
+	},
+	"unlink_email": {
+		"prefix": "nk.unlink_email",
+		"body": "nk.unlink_email(${1:user_id}, ${2:email}, ${3:password})",
+		"description": "Unlink email authentication to a user ID"
+	},
+	"unlink_facebook": {
+		"prefix": "nk.unlink_facebook",
+		"body": "nk.unlink_facebook(${1:user_id}, ${2:username}, ${3:token})",
+		"description": "Unlink Facebook authentication to a user ID"
+	},
+	"unlink_facebook_instant_game": {
+		"prefix": "nk.unlink_facebook_instant_game",
+		"body": "nk.unlink_facebook_instant_game(${1:user_id}, ${2:player_info})",
+		"description": "Unlink Facebook Instant Game authentication to a user ID"
+	},
+	"unlink_gamecenter": {
+		"prefix": "nk.unlink_gamecenter",
+		"body": "nk.unlink_gamecenter(${1:user_id}, ${2:player_id}, ${3:bundle_id}, ${4:timestamp}, ${5:salt}, ${6:signature}, ${6:public_key_url})",
+		"description": "Unlink Apple Game Center authentication to a user ID"
+	},
+	"unlink_google": {
+		"prefix": "nk.unlink_google",
+		"body": "nk.unlink_google(${1:user_id}, ${3:token})",
+		"description": "Unlink Google authentication to a user ID"
+	},
+	"unlink_steam": {
+		"prefix": "nk.unlink_steam",
+		"body": "nk.unlink_steam(${1:user_id}, ${2:username}, ${3:token})",
+		"description": "Unlink Steam authentication to a user ID"
+	},
+	"channel_id_build": {
+		"prefix": "nk.channel_id_build",
+		"body": "local channel_id = nk.channel_id_build(${1:sender_id}, ${2:target}, ${3|1,2,3|})",
+		"description": "Create a channel identifier to be used in other runtime calls. Does not create a channel"
+	},
+	"channel_message_remove": {
+		"prefix": "nk.channel_message_remove",
+		"body": "local remove_ack = nk.channel_message_remove(${1:channel_id}, ${2:message_id}, ${3:sender_id}, ${4:sender_username}, ${5|true,false|})",
+		"description": "Remove a message on a realtime chat channel"
+	},
+	"channel_message_send": {
+		"prefix": "nk.channel_message_send",
+		"body": "local create_ack = nk.channel_message_send(${1:channel_id}, ${2:{content}}, ${3:sender_id}, ${4:sender_username}, ${5|true,false|})",
+		"description": "Send a message on a realtime chat channel"
+	},
+	"channel_messages_list": {
+		"prefix": "nk.channel_messages_list",
+		"body": "local messages = nk.channel_messages_list(${1:channel_id}, ${2:limit}, ${3|true,false|}, ${4:cursor})",
+		"description": "List messages from a realtime chat channel"
+	},
+	"channel_message_update": {
+		"prefix": "nk.channel_message_update",
+		"body": "local update_ack = nk.channel_message_update(${1:channel_id}, ${2:message_id}, ${3:{content}}, ${4:sender_id}, ${5:sender_username}, ${6|true,false|})",
+		"description": "Update a message on a realtime chat channel"
+	},
+	"event": {
+		"prefix": "nk.event",
+		"body": "nk.event(${1:name}, ${2:{properties}}, ${3:timestamp}, ${4|true,false|})",
+		"description": "Generate an event"
+	},
+	"friends_add": {
+		"prefix": "nk.friends_add",
+		"body": "local friends = nk.friends_add(${1:user_id}, ${2:username}, ${3:{ids}}, ${4:{usernames}})",
+		"description": "Add friends to a user"
+	},
+	"friends_block": {
+		"prefix": "nk.friends_block",
+		"body": "local friends = nk.friends_block(${1:user_id}, ${2:username}, ${3:{ids}}, ${4:{usernames}})",
+		"description": "Block friends for a user"
+	},
+	"friends_delete": {
+		"prefix": "nk.friends_delete",
+		"body": "local friends = nk.friends_delete(${1:user_id}, ${2:username}, ${3:{ids}}, ${4:{usernames}})",
+		"description": "Delete friends from a user"
+	},
+	"friends_list": {
+		"prefix": "nk.friends_list",
+		"body": "local friends = nk.friends_list(${1:user_id}, ${2:limit}, ${3|0,1,2,3|}, ${4:cursor})",
+		"description": "List all friends, invites, invited, and blocked which belong to a user"
+	},
+	"friends_of_friends_list": {
+		"prefix": "nk.friends_of_friends_list",
+		"body": "local friends = nk.friends_of_friends_list(${1:user_id}, ${2:limit}, ${4:cursor})",
+		"description": "List all friends, invites, invited, and blocked which belong to a user"
+	},
+	"group_create": {
+		"prefix": "nk.group_create",
+		"body": "local created_group = nk.group_create(${1:user_id}, ${2:name}, ${3:creator_id}, ${4:lang}, ${5:description}, ${6:avatar_url}, ${7|true,false|}, ${8:{metadata}}, ${9:max_member_count})",
+		"description": "Setup a group with various configuration settings. The group will be created if they don't exist or fail if the group name is taken"
+	},
+	"group_delete": {
+		"prefix": "nk.group_delete",
+		"body": "nk.group_delete(${1:group_id})",
+		"description": "Delete a group"
+	},
+	"groups_get_id": {
+		"prefix": "nk.groups_get_id",
+		"body": "local groups = nk.groups_get_id(${1:{group_ids}})",
+		"description": "Fetch one or more groups by their ID"
+	},
+	"groups_list": {
+		"prefix": "nk.groups_list",
+		"body": "local groups = nk.groups_list(${1:group_name}, ${2:lang}, ${3:members}, ${4|true,false|}, ${5:limit})",
+		"description": "Find groups based on the entered criteria"
+	},
+	"group_update": {
+		"prefix": "nk.group_update",
+		"body": "nk.group_update(${1:group_id}, ${2:user_id}, ${3:name}, ${4:creator_id}, ${5:lang}, ${6:description}, ${7:avatar_url}, ${8|true, false|}, ${9:{metadata}}, ${10:max_member_count})",
+		"description": "Update a group with various configuration settings. The group which is updated can change some or all of its fields"
+	},
+	"group_user_join": {
+		"prefix": "nk.group_user_join",
+		"body": "nk.group_user_join(${1:group_id}, ${2:user_id}, ${3:username})",
+		"description": "Join a group for a particular user"
+	},
+	"group_user_leave": {
+		"prefix": "nk.group_user_leave",
+		"body": "nk.group_user_leave(${1:group_id}, ${2:user_id}, ${3:username})",
+		"description": "Leave a group for a particular user"
+	},
+	"group_users_add": {
+		"prefix": "nk.group_users_add",
+		"body": "nk.group_users_add(${1:group_id}, ${2:{user_ids}})",
+		"description": "Add users to a group"
+	},
+	"group_users_ban": {
+		"prefix": "nk.group_users_ban",
+		"body": "nk.group_users_ban(${1:group_id}, ${2:{user_ids}})",
+		"description": "Ban users from a group"
+	},
+	"group_users_demote": {
+		"prefix": "nk.group_users_demote",
+		"body": "nk.group_users_demote(${1:group_id}, ${2:{user_ids}})",
+		"description": "Demote users in a group"
+	},
+	"group_users_kick": {
+		"prefix": "nk.group_users_kick",
+		"body": "nk.group_users_kick(${1:group_id}, ${2:{user_ids}})",
+		"description": "Kick users from a group"
+	},
+	"group_users_list": {
+		"prefix": "nk.group_users_list",
+		"body": "local members = nk.group_users_list(${1:group_id}, ${2:limit}, ${3:state}, ${4:cursor})",
+		"description": "List all members, admins and superadmins which belong to a group. This also list incoming join requests"
+	},
+	"group_users_promote": {
+		"prefix": "nk.group_users_promote",
+		"body": "nk.group_users_promote(${1:group_id}, ${2:{user_ids}})",
+		"description": "Promote users in a group"
+	},
+	"user_groups_list": {
+		"prefix": "nk.user_groups_list",
+		"body": "local groups = nk.user_groups_list(${1:user_id})",
+		"description": "List all groups which a user belongs to and whether they've been accepted or if it's an invite"
+	},
+	"register_leaderboard_reset": {
+		"prefix": "nk.register_leaderboard_reset",
+		"body": "nk.register_leaderboard_reset(${1:function})",
+		"description": "Registers a function to be run when a leaderboard resets"
+	},
+	"register_matchmaker_matched": {
+		"prefix": "nk.register_matchmaker_matched",
+		"body": "nk.register_matchmaker_matched(${1:function})",
+		"description": "Registers a function that will be called when matchmaking finds opponents"
+	},
+	"register_req_after": {
+		"prefix": "nk.register_req_after",
+		"body": "nk.register_req_after(${1:function}, ${2:id})",
+		"description": "Register a function with the server which will be executed after every non-realtime message as specified while registering the function"
+	},
+	"register_req_before": {
+		"prefix": "nk.register_req_before",
+		"body": "nk.register_req_before(${1:function}, ${2:id})",
+		"description": "Register a function with the server which will be executed before any non-realtime message with the specified message name"
+	},
+	"register_rpc": {
+		"prefix": "nk.register_rpc",
+		"body": "nk.register_rpc(${1:function}, ${2:id})",
+		"description": "Registers a function for use with client RPC to the server"
+	},
+	"register_rt_after": {
+		"prefix": "nk.register_rt_after",
+		"body": "nk.register_rt_after(${1:function}, ${2:id})",
+		"description": "Register a function with the server which will be executed after every realtime message with the specified message name"
+	},
+	"register_rt_before": {
+		"prefix": "nk.register_rt_before",
+		"body": "nk.register_rt_before(${1:function}, ${2:id})",
+		"description": "Register a function with the server which will be executed before any realtime message with the specified message name"
+	},
+	"register_shutdown": {
+		"prefix": "nk.register_shutdown",
+		"body": "nk.register_shutdown(${1:function})",
+		"description": "Registers a function to be run when the server received a shutdown signal. The function only fires if grace_period_sec > 0"
+	},
+	"register_tournament_end": {
+		"prefix": "nk.register_tournament_end",
+		"body": "nk.register_tournament_end(${1:function})",
+		"description": "Registers a function to be run when a tournament ends"
+	},
+	"register_tournament_reset": {
+		"prefix": "nk.register_tournament_reset",
+		"body": "nk.register_tournament_reset(${1:function})",
+		"description": "Registers a function to be run when a tournament resets"
+	},
+	"run_once": {
+		"prefix": "nk.run_once",
+		"body": "nk.run_once(${1:function})",
+		"description": "Registers a function to be run only once"
+	},
+	"leaderboard_create": {
+		"prefix": "nk.leaderboard_create",
+		"body": "nk.leaderboard_create(${1:id}, ${2|true,false|}, ${3|\"asc\",\"desc\"|}, ${4|\"best\",\"set\",\"incr\"|}, ${5:reset}, ${6:{metadata}}, ${7|true,false|})",
+		"description": "Setup a new dynamic leaderboard with the specified ID and various configuration settings. The leaderboard will be created if it doesn't already exist, otherwise its configuration will not be updated"
+	},
+	"leaderboard_delete": {
+		"prefix": "nk.leaderboard_delete",
+		"body": "nk.leaderboard_delete(${1:id})",
+		"description": "Delete a leaderboard and all scores that belong to it"
+	},
+	"leaderboard_list": {
+		"prefix": "nk.leaderboard_list",
+		"body": "local leaderboards = nk.leaderboard_list(${1:limit}, ${2:cursor})",
+		"description": "Find leaderboards which have been created on the server. Leaderboards can be filtered with categories"
+	},
+	"leaderboard_ranks_disable": {
+		"prefix": "nk.leaderboard_ranks_disable",
+		"body": "nk.leaderboard_ranks_disable(${1:id})",
+		"description": "Disable a leaderboard rank cache freeing its allocated resources. If already disabled is a NOOP"
+	},
+	"leaderboard_record_delete": {
+		"prefix": "nk.leaderboard_record_delete",
+		"body": "nk.leaderboard_record_delete(${1:id, ${2:owner_id}})",
+		"description": "Remove an owner's record from a leaderboard, if one exists"
+	},
+	"leaderboard_records_haystack": {
+		"prefix": "nk.leaderboard_records_haystack",
+		"body": "local records, next_cursor, prev_cursor = nk.leaderboard_records_haystack(${1:limit, ${2:owner_id}, ${3:limit}, ${4:cursor}, ${5:expiry})",
+		"description": "Fetch the list of leaderboard records around the owner"
+	},
+	"leaderboard_records_list": {
+		"prefix": "nk.leaderboard_records_list",
+		"body": "local records, owner_records, next_cursor, prev_cursor = nk.leaderboard_records_list(${1:limit, ${2:{owner_ids}}, ${3:limit}, ${4:cursor}, ${5:override_expiry})",
+		"description": "List records on the specified leaderboard, optionally filtering to only a subset of records by their owners. Records will be listed in the preconfigured leaderboard sort order"
+	},
+	"leaderboard_records_list_cursor_from_rank": {
+		"prefix": "nk.leaderboard_records_list_cursor_from_rank",
+		"body": "local cursor = nk.leaderboard_records_list_cursor_from_rank(${1:id}, ${2:rank}, ${3:override_expiry})",
+		"description": "Build a cursor to be used with leaderboardRecordsList to fetch records starting at a given rank. Only available if rank cache is not disabled for the leaderboard"
+	},
+	"leaderboard_record_write": {
+		"prefix": "nk.leaderboard_record_write",
+		"body": "nk.leaderboard_record_write(${1:id}, ${2:owner}, ${3:username}, ${4:score}, ${5:subscore}, ${6:{metadata}})",
+		"description": "Use the preconfigured operator for the given leaderboard to submit a score for a particular user"
+	},
+	"leaderboards_get_id": {
+		"prefix": "nk.leaderboards_get_id",
+		"body": "local leaderboards = nk.leaderboards_get_id(${1:leaderboard_ids})",
+		"description": "Fetch one or more leaderboards by ID."
+	},
+	"logger_debug": {
+		"prefix": "nk.logger_debug",
+		"body": "nk.logger_debug(${1:message})",
+		"description": "Write a DEBUG level message to the server logs"
+	},
+	"logger_error": {
+		"prefix": "nk.logger_error",
+		"body": "nk.logger_error(${1:message})",
+		"description": "Write an ERROR level message to the server logs"
+	},
+	"logger_info": {
+		"prefix": "nk.logger_info",
+		"body": "nk.logger_info(${1:message})",
+		"description": "Write an INFO level message to the server logs"
+	},
+	"logger_warn": {
+		"prefix": "nk.logger_warn",
+		"body": "nk.logger_warn(${1:message})",
+		"description": "Write a WARN level message to the server logs"
+	},
+	"match_create": {
+		"prefix": "nk.match_create",
+		"body": "local match_id = nk.match_create(${1:module}, ${2:{params}})",
+		"description": "Create a new authoritative realtime multiplayer match running on the given runtime module name. The given params are passed to the match's init hook"
+	},
+	"match_get": {
+		"prefix": "nk.match_get",
+		"body": "local match_data = nk.match_get(${1:match_id})",
+		"description": "Get information on a running match"
+	},
+	"match_list": {
+		"prefix": "nk.match_list",
+		"body": "local matches = nk.match_list(${1:limit}, ${2|true,false,nil|}, ${3:label}, ${4:min_size}, ${5:max_size})",
+		"description": "List currently running realtime multiplayer matches and optionally filter them by authoritative mode, label, and current participant count"
+	},
+	"match_signal": {
+		"prefix": "nk.match_signal",
+		"body": "local response = nk.match_signal(${1:match_id}, ${2:data})",
+		"description": "Allow the match handler to be sent a reservation signal to mark a user ID or session ID into the match state ahead of their join attempt and eventual join flow. Called when the match handler receives a runtime signal"
+	},
+	"metrics_counter_add": {
+		"prefix": "nk.metrics_counter_add",
+		"body": "nk.metrics_counter_add(${1:name}, ${2:{tags}}, ${3:delta})",
+		"description": "Add a custom metrics counter"
+	},
+	"metrics_gauge_set": {
+		"prefix": "nk.metrics_gauge_set",
+		"body": "nk.metrics_gauge_set(${1:name}, ${2:{tags}}, ${3:value})",
+		"description": "Add a custom metrics gauge"
+	},
+	"metrics_timer_record": {
+		"prefix": "nk.metrics_timer_record",
+		"body": "nk.metrics_timer_record(${1:name}, ${2:{tags}}, ${3:value})",
+		"description": "Add a custom metrics timer"
+	},
+	"notifications_delete": {
+		"prefix": "nk.notifications_delete",
+		"body": "nk.notifications_delete(${1:{notifications}})",
+		"description": "Delete one or more in-app notifications"
+	},
+	"notifications_delete_id": {
+		"prefix": "nk.notifications_delete_id",
+		"body": "nk.notifications_delete(${1:{notifications}}, ${2:user_id})",
+		"description": "Delete notifications by their id"
+	},
+	"notification_send": {
+		"prefix": "nk.notification_send",
+		"body": "nk.notification_send(${1:receiver_id}, ${2:subject}, ${3:{content}}, ${4:code}, ${5:sender_id}, ${6|true,false|})",
+		"description": "Send one in-app notification to a user"
+	},
+	"notification_send_all": {
+		"prefix": "nk.notification_send_all",
+		"body": "nk.notification_send_all(${1:subject}, ${2:{content}}, ${3:code}, ${4|true,false|})",
+		"description": "Send an in-app notification to all users"
+	},
+	"notifications_get_id": {
+		"prefix": "nk.notifications_get_id",
+		"body": "nk.notifications_get_id(${1:{notifications}}, ${2:user_id})",
+		"description": "Get notifications by their id"
+	},
+	"notifications_send": {
+		"prefix": "nk.notifications_send",
+		"body": [
+			"local new_notifications = {",
+			"\t{",
+			"\t\tsubject = ${1:subject},",
+			"\t\tcontent = ${2:{content}},",
+			"\t\tsender_id = ${3:sender_id},",
+			"\t\tuser_id = ${4:user_id},",
+			"\t\tcode = ${5:code},",
+			"\t\tpersistent = ${6|true, false|}",
+			"\t}",
+			"}",
+			"\nnk.notifications_send(new_notifications)"
+		],
+		"description": "Send one or more in-app notifications to a user"
+	},
+	"purchase_get_by_transaction_id": {
+		"prefix": "nk.purchase_get_by_transaction_id",
+		"body": "local purchases = nk.purchase_get_by_transaction_id(${1:transaction_id})",
+		"description": "Look up a purchase receipt by transaction ID"
+	},
+	"purchases_list": {
+		"prefix": "nk.purchases_list",
+		"body": "local purchases = nk.purchases_list(${1:user_id}, ${2:limit}, ${3:cursor})",
+		"description": "List stored validated purchase receipts"
+	},
+	"purchase_validate_apple": {
+		"prefix": "nk.purchase_validate_apple",
+		"body": "local validation = nk.purchase_validate_apple(${1:user_id}, ${2:receipt}, ${3|true,false|}, {password_override})",
+		"description": "Validates and stores the purchases present in an Apple App Store Receipt"
+	},
+	"purchase_validate_facebook_instant": {
+		"prefix": "nk.purchase_validate_facebook_instant",
+		"body": "local validation = nk.purchase_validate_facebook_instant(${1:user_id}, ${2:signed_request}, ${3|true,false|})",
+		"description": "Validates and stores a purchase receipt from the Facebook Instant Games"
+	},
+	"purchase_validate_google": {
+		"prefix": "nk.purchase_validate_google",
+		"body": "local validation = nk.purchase_validate_google(${1:user_id}, ${2:receipt}, ${3|true,false|}, ${4:client_email_override}, ${5:private_key_override})",
+		"description": "Validates and stores a purchase receipt from the Google Play Store"
+	},
+	"purchase_validate_huawei": {
+		"prefix": "nk.purchase_validate_huawei",
+		"body": "local validation = nk.purchase_validate_huawei(${1:user_id}, ${2:receipt}, ${3:signature}, ${4|true,false|})",
+		"description": "Validates and stores a purchase receipt from the Huawei App Gallery"
+	},
+	"session_disconnect": {
+		"prefix": "nk.session_disconnect",
+		"body": "nk.session_disconnect(${1:session_id}, ${2:reason})",
+		"description": "Disconnect a session"
+	},
+	"session_logout": {
+		"prefix": "nk.session_logout",
+		"body": "nk.session_logout(${1:user_id}, ${2:token}, ${3:refresh_token})",
+		"description": "Log out a user from their current session"
+	},
+	"register_storage_index": {
+		"prefix": "nk.register_storage_index",
+		"body": "local err = nk.register_storage_index(${1:name}, ${2:collection}, ${3:key}, ${4:{fields}}, ${5:max_entries})",
+		"description": "Create a new storage index"
+	},
+	"register_storage_index_filter": {
+		"prefix": "nk.register_storage_index_filter",
+		"body": "local err = nk.register_storage_index_filter(${1:name}, ${2:index_filter})",
+		"description": "List storage index entries"
+	},
+	"storage_delete": {
+		"prefix": "nk.storage_delete",
+		"body": "nk.storage_delete(${1:{object_ids}})",
+		"description": "Remove one or more objects by their collection/keyname and optional user"
+	},
+	"storage_index_list": {
+		"prefix": "nk.storage_index_list",
+		"body": "local err = nk.storage_index_list(${1:name}, ${2:query}, ${3:limit}, ${4:order}, ${5:caller_id})",
+		"description": "List storage index entries"
+	},
+	"storage_list": {
+		"prefix": "nk.storage_list",
+		"body": "local records = nk.storage_list(${1:user_id}, ${2:collection}, ${3:limit}, ${4:cursor}, ${5:caller_id})",
+		"description": "List records in a collection and page through results. The records returned can be filtered to those owned by the user or \"\" for public records"
+	},
+	"storage_read": {
+		"prefix": "nk.storage_read",
+		"body": "local objects = nk.storage_read(${1:{object_ids}})",
+		"description": "Fetch one or more records by their bucket/collection/keyname and optional user"
+	},
+	"storage_write": {
+		"prefix": "nk.storage_write",
+		"body": "nk.storage_write(${1:{new_objects}})",
+		"description": "Write one or more objects by their collection/keyname and optional user"
+	},
+	"stream_close": {
+		"prefix": "nk.stream_close",
+		"body": [
+			"local stream_obj = {",
+			"\tmode = ${1:tmode},",
+			"\tsubject = ${2:subject},",
+			"\tsubcontext = ${3:subcontext},",
+			"\tlabel = ${4:label}",
+			"}",
+			"\nnk.stream_close(stream_obj)"
+		],
+		"description": "Close a stream and remove all presences on it"
+	},
+	"stream_count": {
+		"prefix": "nk.stream_count",
+		"body": [
+			"local stream_obj = {",
+			"\tmode = ${1:tmode},",
+			"\tsubject = ${2:subject},",
+			"\tsubcontext = ${3:subcontext},",
+			"\tlabel = ${4:label}",
+			"}",
+			"\nlocal count = nk.stream_count(stream_obj)"
+		],
+		"description": "vGet a count of stream presences"
+	},
+	"stream_send": {
+		"prefix": "nk.stream_send",
+		"body": [
+			"local stream_obj = {",
+			"\tmode = ${1:tmode},",
+			"\tsubject = ${2:subject},",
+			"\tsubcontext = ${3:subcontext},",
+			"\tlabel = ${4:label}",
+			"}",
+			"\nnk.stream_send(stream_obj, ${1:data}, ${2:{presences}}, ${3|true,false|})"
+		],
+		"description": "Send data to presences on a stream"
+	},
+	"stream_send_raw": {
+		"prefix": "nk.stream_send_raw",
+		"body": [
+			"local stream_obj = {",
+			"\tmode = ${1:tmode},",
+			"\tsubject = ${2:subject},",
+			"\tsubcontext = ${3:subcontext},",
+			"\tlabel = ${4:label}",
+			"}",
+			"\nnk.stream_send_raw(stream_obj, ${1:data}, ${2:{presences}}, ${3|true,false|})"
+		],
+		"description": "Send a message to presences on a stream"
+	},
+	"stream_user_get": {
+		"prefix": "nk.stream_user_get",
+		"body": [
+			"local stream_obj = {",
+			"\tmode = ${1:tmode},",
+			"\tsubject = ${2:subject},",
+			"\tsubcontext = ${3:subcontext},",
+			"\tlabel = ${4:label}",
+			"}",
+			"\nlocal user = nk.stream_user_get(${1:user_id}, ${2:session_id}, stream_obj)"
+		],
+		"description": "Retreive a stream presence and metadata by user ID"
+	},
+	"stream_user_join": {
+		"prefix": "nk.stream_user_join",
+		"body": [
+			"local stream_obj = {",
+			"\tmode = ${1:tmode},",
+			"\tsubject = ${2:subject},",
+			"\tsubcontext = ${3:subcontext},",
+			"\tlabel = ${4:label}",
+			"}",
+			"\nlocal success = nk.stream_user_join(${1:user_id}, ${2:session_id}, stream_obj, ${3|true,false|}, ${4|true,false|}, ${5:status})"
+		],
+		"description": "Add a user to a stream"
+	},
+	"stream_user_kick": {
+		"prefix": "nk.stream_user_kick",
+		"body": [
+			"local stream_obj = {",
+			"\tmode = ${1:tmode},",
+			"\tsubject = ${2:subject},",
+			"\tsubcontext = ${3:subcontext},",
+			"\tlabel = ${4:label}",
+			"}",
+			"\nnk.stream_user_kick(${1:presence_obj}, stream_obj)"
+		],
+		"description": "Kick user(s) from a stream"
+	},
+	"stream_user_leave": {
+		"prefix": "nk.stream_user_leave",
+		"body": [
+			"local stream_obj = {",
+			"\tmode = ${1:tmode},",
+			"\tsubject = ${2:subject},",
+			"\tsubcontext = ${3:subcontext},",
+			"\tlabel = ${4:label}",
+			"}",
+			"\nnk.stream_user_leave(${1:user_id}, ${2:session_id}, stream_obj)"
+		],
+		"description": "Remove a user from a stream"
+	},
+	"stream_user_list": {
+		"prefix": "nk.stream_user_list",
+		"body": [
+			"local stream_obj = {",
+			"\tmode = ${1:tmode},",
+			"\tsubject = ${2:subject},",
+			"\tsubcontext = ${3:subcontext},",
+			"\tlabel = ${4:label}",
+			"}",
+			"\nlocal presences = nk.stream_user_list(stream_obj, ${1|true,false|}, ${2|true,false|})"
+		],
+		"description": "List all users currently online and connected to a stream"
+	},
+	"stream_user_update": {
+		"prefix": "nk.stream_user_update",
+		"body": [
+			"local stream_obj = {",
+			"\tmode = ${1:tmode},",
+			"\tsubject = ${2:subject},",
+			"\tsubcontext = ${3:subcontext},",
+			"\tlabel = ${4:label}",
+			"}",
+			"\nlocal success = nk.stream_user_update(${1:user_id}, ${2:session_id}, stream_obj, ${3|true,false|}, ${4|true,false|}, ${5:status})"
+		],
+		"description": "Update a stream user by ID"
+	},
+	"subscription_get_by_product_id": {
+		"prefix": "nk.subscription_get_by_product_id",
+		"body": "local subscriptions = nk.subscription_get_by_product_id(${1:user_id}, ${2:product_id})",
+		"description": "Look up a subscription by product ID"
+	},
+	"subscriptions_list": {
+		"prefix": "nk.subscriptions_list",
+		"body": "local subscriptions = nk.subscriptions_list(${1:user_id}, ${2:limit}, ${3:cursor})",
+		"description": "List stored validated subscription receipts"
+	},
+	"subscriptions_validate_apple": {
+		"prefix": "nk.subscriptions_validate_apple",
+		"body": "local validation = nk.subscriptions_validate_apple(${1:user_id}, ${2:receipt}, ${3|true,false|}, ${4:password_override})",
+		"description": "Validates and stores the subscription present in an Apple App Store Receipt"
+	},
+	"subscription_validate_google": {
+		"prefix": "nk.subscription_validate_google",
+		"body": "local validation = nk.subscription_validate_google(${1:user_id}, ${2:receipt}, ${3|true,false|}, ${4:client_email_override}, ${5:private_key_override})",
+		"description": "Validates and stores a subscription receipt from the Google Play Store"
+	},
+	"tournament_add_attempt": {
+		"prefix": "nk.tournament_add_attempt",
+		"body": "nk.tournament_add_attempt(${1:id}, ${2:owner}, ${3:count})",
+		"description": "Add additional score attempts to the owner's tournament record. This overrides the max number of score attempts allowed in the tournament for this specific owner"
+	},
+	"tournament_create": {
+		"prefix": "nk.tournament_create",
+		"body": "nk.tournament_create(${1:id}, ${2|true,false|}, ${3|\"asc\",\"desc\"|}, ${4|\"best\",\"set\",\"incr\"|}, ${5:reset}, ${6:{metadata}}, ${7:title}, ${8:description}, ${9:category}, ${10:start_time}, ${11:end_time}, ${12:duration}, ${13:max_size}, ${14:max_num_score}, ${15|true,false|}, ${16|true,false|})",
+		"description": "Setup a new dynamic tournament with the specified ID and various configuration settings. The underlying leaderboard will be created if it doesn't already exist, otherwise its configuration will not be updated"
+	},
+	"tournament_delete": {
+		"prefix": "nk.tournament_delete",
+		"body": "nk.tournament_delete(${1:id})",
+		"description": "Delete a tournament and all records that belong to it"
+	},
+	"tournament_join": {
+		"prefix": "nk.tournament_join",
+		"body": "nk.tournament_join(${1:id}, ${2:owner}, ${3:username})",
+		"description": "A tournament may need to be joined before the owner can submit scores. This operation is idempotent and will always succeed for the owner even if they have already joined the tournament"
+	},
+	"tournament_list": {
+		"prefix": "nk.tournament_list",
+		"body": "local tournaments = nk.tournament_list(${1:category_start}, ${2:category_end}, ${3:start_time}, ${4:end_time}, ${5:limit}, ${6:cursor})",
+		"description": "Find tournaments which have been created on the server. Tournaments can be filtered with categories and via start and end times"
+	},
+	"tournament_ranks_disable": {
+		"prefix": "nk.tournament_ranks_disable",
+		"body": "nk.tournament_ranks_disable(${1:id})",
+		"description": "Disable a tournament rank cache freeing its allocated resources. If already disabled is a NOOP"
+	},
+	"tournament_records_haystack": {
+		"prefix": "nk.tournament_records_haystack",
+		"body": "nk.tournament_records_haystack(${1:id}, ${2:owner}, ${3:limit}, ${4:cursor}, ${5:expiry})",
+		"description": "Fetch the list of tournament records around the owner"
+	},
+	"tournament_records_list": {
+		"prefix": "nk.tournament_records_list",
+		"body": "local records = nk.tournament_records_list(${1:id}, ${2:owners}, ${3:limit}, ${4:cursor}, ${5:override_expiry})",
+		"description": "List records on the specified tournament, optionally filtering to only a subset of records by their owners. Records will be listed in the preconfigured tournament sort order"
+	},
+	"tournament_record_write": {
+		"prefix": "nk.tournament_record_write",
+		"body": "nk.tournament_record_write(${1:id}, ${2:owner}, ${3:username}, ${4:score}, ${5:subscore}, ${6:{metadata}})",
+		"description": "Submit a score and optional subscore to a tournament leaderboard. If the tournament has been configured with join required this will fail unless the owner has already joined the tournament"
+	},
+	"tournaments_get_id": {
+		"prefix": "nk.tournaments_get_id",
+		"body": "local tournaments = nk.tournaments_get_id(${1:{tournament_ids}})",
+		"description": "Fetch one or more tournaments by ID"
+	},
+	"multi_update": {
+		"prefix": "nk.multi_update",
+		"body": "local results = nk.multi_update(${1:{account_updates}}, ${2:{storage_writes}}, ${3:{wallet_updates}}, ${4|true,false|})",
+		"description": "Update account, storage, and wallet information simultaneously"
+	},
+	"users_ban_id": {
+		"prefix": "nk.users_ban_id",
+		"body": "nk.users_ban_id(${1:user_ids})",
+		"description": "Ban one or more users by ID"
+	},
+	"users_get_id": {
+		"prefix": "nk.users_get_id",
+		"body": "local users = nk.users_get_id(${1:{user_ids}})",
+		"description": "Fetch one or more users by ID"
+	},
+	"users_get_random": {
+		"prefix": "nk.users_get_random",
+		"body": "local users = nk.users_get_random(${1:count})",
+		"description": "Fetch one or more users randomly"
+	},
+	"users_get_username": {
+		"prefix": "nk.users_get_username",
+		"body": "local users = nk.users_get_username(${1:{usernames}})",
+		"description": "Fetch one or more users by username"
+	},
+	"users_unban_id": {
+		"prefix": "nk.users_unban_id",
+		"body": "nk.users_unban_id(${1:{user_ids}})",
+		"description": "Unban one or more users by ID"
+	},
+	"aes128_decrypt": {
+		"prefix": "nk.aes128_decrypt",
+		"body": "local plaintext = nk.aes128_decrypt(${1:input}, ${2:key})",
+		"description": "Decrypt an aes128 encrypted string"
+	},
+	"aes128_encrypt": {
+		"prefix": "nk.aes128_encrypt",
+		"body": "local cyphertext = nk.aes128_encrypt(${1:input}, ${2:key})",
+		"description": "aes128 encrypt a string input"
+	},
+	"aes256_decrypt": {
+		"prefix": "nk.aes256_decrypt",
+		"body": "local plaintext = nk.aes256_decrypt(${1:input}, ${2:key})",
+		"description": "Decrypt an aes256 encrypted string"
+	},
+	"aes256_encrypt": {
+		"prefix": "nk.aes256_encrypt",
+		"body": "local cyphertext = nk.aes256_encrypt(${1:input}, ${2:key})",
+		"description": "aes256 encrypt a string input"
+	},
+	"base16_decode": {
+		"prefix": "nk.base16_decode",
+		"body": "local decoded = nk.base16_decode(${1:input})",
+		"description": "Decode a base16 encoded string"
+	},
+	"base16_encode": {
+		"prefix": "nk.base16_encode",
+		"body": "local encoded = nk.base16_encode(${1:input})",
+		"description": "base16 encode a string input"
+	},
+	"base64_decode": {
+		"prefix": "nk.base64_decode",
+		"body": "local decoded = nk.base64_decode(${1:input}, ${2|true,false|})",
+		"description": "Decode a base64 encoded string"
+	},
+	"base64_encode": {
+		"prefix": "nk.base64_encode",
+		"body": "local encoded = nk.base64_encode(${1:input})",
+		"description": "Base64 encode a string input"
+	},
+	"base64url_decode": {
+		"prefix": "nk.base64url_decode",
+		"body": "local decoded = nk.base64url_decode(${1:input})",
+		"description": "Decode a base64 URL encoded string"
+	},
+	"base64url_encode": {
+		"prefix": "nk.base64url_encode",
+		"body": "local encoded = nk.base64url_encode(${1:input})",
+		"description": "Base64 URL encode a string input"
+	},
+	"bcrypt_compare": {
+		"prefix": "nk.bcrypt_compare",
+		"body": "local is_same = nk.bcrypt_compare(${1:input}, ${2:plaintext})",
+		"description": "Compare hashed input against a plaintext input"
+	},
+	"bcrypt_hash": {
+		"prefix": "nk.bcrypt_hash",
+		"body": "local hashed = nk.bcrypt_hash(${1:input})",
+		"description": "Generate one-way hashed string using bcrypt"
+	},
+	"cron_next": {
+		"prefix": "nk.cron_next",
+		"body": "local next_ts = nk.cron_next(${1:expression}, ${2:timestamp})",
+		"description": "Parses a CRON expression and a timestamp in UTC seconds, and returns the next matching timestamp in UTC seconds"
+	},
+	"cron_prev": {
+		"prefix": "nk.cron_prev",
+		"body": "local prev_ts = nk.cron_prev(${1:expression}, ${2:timestamp})",
+		"description": "Parses a CRON expression and a timestamp in UTC seconds, and returns the previous matching timestamp in UTC seconds"
+	},
+	"file_read": {
+		"prefix": "nk.file_read",
+		"body": "local contents = nk.file_read(${1:relative_path})",
+		"description": "Read file from user device"
+	},
+	"hmac_sha256_hash": {
+		"prefix": "nk.hmac_sha256_hash",
+		"body": "local hash = nk.hmac_sha256_hash(${1:input}, ${2:key})",
+		"description": "Create a HMAC-SHA256 hash from input and key"
+	},
+	"http_request": {
+		"prefix": "nk.http_request",
+		"body": "local success, code, headers, body = pcall(nk.http_request, ${1:url}, ${2:method}, ${3:headers}, ${4:content}, ${5:timeout}, ${6|true,false|})",
+		"description": "Send a HTTP request that returns a data type containing the result of the HTTP response"
+	},
+	"json_decode": {
+		"prefix": "nk.json_decode",
+		"body": "local json = nk.json_decode(${1:json_string})",
+		"description": "Decode the JSON input as a Lua table"
+	},
+	"json_encode": {
+		"prefix": "nk.json_encode",
+		"body": "local json = nk.json_encode(${1:value})",
+		"description": "Encode the input as JSON"
+	},
+	"jwt_generate": {
+		"prefix": "nk.jwt_generate",
+		"body": "local token = nk.jwt_generate(${1:signing_method}, ${2:signing_key}, ${3:claims})",
+		"description": "Generate a JSON Web Token"
+	},
+	"md5_hash": {
+		"prefix": "nk.md5_hash",
+		"body": "local hashed = nk.md5_hash(${1:input})",
+		"description": "Create an md5 hash from the input"
+	},
+	"rsa_sha256_hash": {
+		"prefix": "nk.rsa_sha256_hash",
+		"body": "local cipher_text = nk.rsa_sha256_hash(${1:input}, ${2:key})",
+		"description": "Create a RSA encrypted SHA256 hash from the input"
+	},
+	"sha256_hash": {
+		"prefix": "nk.sha256_hash",
+		"body": "local cipher_text = nk.sha256_hash(${1:input})",
+		"description": "Create an SHA256 hash from the input"
+	},
+	"sql_exec": {
+		"prefix": "nk.sql_exec",
+		"body": "local affected_rows_count = nk.sql_exec(${1:query}, ${2:{parameters}})",
+		"description": "Execute an arbitrary SQL query and return the number of rows affected. Typically an \"INSERT\", \"DELETE\", or \"UPDATE\" statement with no return columns"
+	},
+	"sql_query": {
+		"prefix": "nk.sql_query",
+		"body": "local rows = nk.sql_query(${1:query}, ${2:{parameters}})",
+		"description": "Execute an arbitrary SQL query that is expected to return row data. Typically a \"SELECT\" statement"
+	},
+	"time": {
+		"prefix": "nk.time",
+		"body": "local utc_msec = nk.time()",
+		"description": "Get the current UTC time in milliseconds using the system wall clock"
+	},
+	"uuid_bytes_to_string": {
+		"prefix": "nk.uuid_bytes_to_string",
+		"body": "local uuid_string = nk.uuid_bytes_to_string(${1:uuid_bytes})",
+		"description": "Convert the 16-byte raw representation of a UUID into the equivalent 36-character standard UUID string representation. Will raise an error if the input is not valid and cannot be converted"
+	},
+	"uuid_string_to_bytes": {
+		"prefix": "nk.uuid_string_to_bytes",
+		"body": "local uuid_bytes = nk.uuid_string_to_bytes(${1:uuid_string})",
+		"description": "Convert the 36-character string representation of a UUID into the equivalent 16-byte raw UUID representation. Will raise an error if the input is not valid and cannot be converted"
+	},
+	"uuid_v4": {
+		"prefix": "nk.uuid_v4",
+		"body": "local uuid = nk.uuid_v4()",
+		"description": "Generate a version 4 UUID in the standard 36-character string representation"
+	},
+	"wallet_ledger_list": {
+		"prefix": "nk.wallet_ledger_list",
+		"body": "local updates = nk.wallet_ledger_list(${1:user_id}, ${2:limit}, ${3:cursor})",
+		"description": "List all wallet updates for a particular user from oldest to newest"
+	},
+	"wallet_ledger_update": {
+		"prefix": "nk.wallet_ledger_update",
+		"body": "local u = nk.wallet_ledger_update(${1:id}, ${2:metadata})",
+		"description": "Update the metadata for a particular wallet update in a user's wallet ledger history. Useful when adding a note to a transaction for example"
+	},
+	"wallets_update": {
+		"prefix": "nk.wallets_update",
+		"body": "nk.wallets_update(${1:updates}, ${2|true,false|})",
+		"description": "Update one or more user wallets with individual changesets. This function will also insert a new wallet ledger item into each user's wallet history that tracks their update"
+	},
+	"wallet_update": {
+		"prefix": "nk.wallet_update",
+		"body": "local updated, previous = nk.wallet_update(${1:user_id}, ${2:{changeset}}, ${3:{metadata}}, ${4|true,false|})",
+		"description": "Update a user's wallet with the given changeset"
+	},
+	"m.match": {
+		"prefix": "match",
+		"body": [
+			"local M = {}",
+			"${1:}\nreturn M"
+		],
+		"description": ""
+	},
+	"m.match_init": {
+		"prefix": "match_init",
+		"body": [
+			"function M.match_init(context, initial_state)",
+			"\tlocal state = {",
+			"\t\tpresences = {},",
+			"\t}",
+			"\tlocal tick_rate = ${1:}",
+			"\tlocal label = ${2:}",
+			"\n\treturn state, tick_rate, label",
+			"end"
+		],
+		"description": "Invoked when a match is created as a result of the match create function and sets up the initial state of a match. This will be called once at match start"
+	},
+	"m.match_join": {
+		"prefix": "match_join",
+		"body": [
+			"function M.match_join(context, dispatcher, tick, state, presences)",
+			"\tfor _, presence in ipairs(presences) do",
+			"\t\tstate.presences[presence.session_id] = presence",
+			"\tend",
+			"\treturn state",
+			"end"
+		],
+		"description": "Executed when one or more users have successfully completed the match join process after their match_join_attempt() returns true. When their presences are sent to this function the users are ready to receive match data messages and can be targets for the dispatcher's broadcast_message() function"
+	},
+	"m.match_join_attempt": {
+		"prefix": "match_join_attempt",
+		"body": [
+			"function M.match_join_attempt(context, dispatcher, tick, state, presence, metadata)",
+			"\tif state.presences[presence.user_id] ~= nil then",
+			"\t\treturn state, false, \"User already logged in.\"",
+			"\tend",
+			"\treturn state, true",
+			"end"
+		],
+		"description": "Executed when a user attempts to join the match using the client's match join operation. Match join attempt can be used to prevent more players from joining after a match has started or disallow the user for any other game specific reason"
+	},
+	"m.match_leave": {
+		"prefix": "match_leave",
+		"body": [
+			"function M.match_leave(context, dispatcher, tick, state, presences)",
+			"\tfor _, presence in ipairs(presences) do",
+			"\t\tstate.presences[presence.session_id] = nil",
+			"\tend",
+			"\n\treturn state",
+			"end"
+		],
+		"description": "Executed when one or more users have left the match for any reason including connection loss"
+	},
+	"m.match_loop": {
+		"prefix": "match_loop",
+		"body": [
+			"function M.match_loop(context, dispatcher, tick, state, messages)",
+			"\treturn state",
+			"end"
+		],
+		"description": "Executed on an interval based on the tick rate returned by match_init. Each tick the match loop is run which can process messages received from clients and apply changes to the match state before the next tick. It can also dispatch messages to one or more connected opponents. To send messages back to the opponents in the match you can keep track of them in the game state and use the dispatcher object to send messages to subsets of the users or all of them"
+	},
+	"m.match_signal": {
+		"prefix": "match_signal",
+		"body": [
+			"function M.match_signal(context, dispatcher, tick, state, data)",
+			"\treturn state, data",
+			"end"
+		],
+		"description": "Called when the match handler receives a runtime signal. Match signals allow the match handler to be sent a reservation signal to mark a user ID or session ID into the match state ahead of their join attempt and eventual join flow. This is useful to apply reservations to a matchmaking system with Nakama's matchmaker or match listings APIs"
+	},
+	"m.match_terminate": {
+		"prefix": "nk.logger_warn",
+		"body": [
+			"function M.match_terminate(context, dispatcher, tick, state, grace_seconds)",
+			"\treturn state",
+			"end"
+		],
+		"description": "Called when the server begins a graceful shutdown process. Will not be called if graceful shutdown is disabled. The match should attempt to complete any processing before the given number of seconds elapses, and optionally send a message to clients to inform them the server is shutting down. When the grace period expires the match will be forcefully closed if it is still running, clients will be disconnected, and the server will shut down"
+	},
+	"presences.user_id ": {
+		"prefix": "presences.user_id",
+		"body": "presences[${1:}].user_id",
+		"description": ""
+	},
+	"presences.session_id": {
+		"prefix": "presences.session_id",
+		"body": "presences[${1:}].session_id",
+		"description": ""
+	},
+	"presences.username": {
+		"prefix": "presences.username",
+		"body": "presences[${1:}].username",
+		"description": ""
+	},
+	"presences.node": {
+		"prefix": "presences.node",
+		"body": "presences[${1:}].node",
+		"description": ""
+	},
+	"messages.sender": {
+		"prefix": "messages.sender",
+		"body": "messages[${1:}].sender",
+		"description": ""
+	},
+	"messages.sender.user_id": {
+		"prefix": "messages.sender.user_id",
+		"body": "messages[${1:}].sender.user_id",
+		"description": ""
+	},
+	"messages.sender.session_id": {
+		"prefix": "messages.sender.session_id",
+		"body": "messages[${1:}].sender.session_id",
+		"description": ""
+	},
+	"messages.sender.username": {
+		"prefix": "messages.sender.username",
+		"body": "messages[${1:}].sender.username",
+		"description": ""
+	},
+	"messages.sender.node": {
+		"prefix": "messages.sender.node",
+		"body": "messages[${1:}].sender.node",
+		"description": ""
+	},
+	"messages.op_code": {
+		"prefix": "messages.op_code",
+		"body": "messages[${1:}].op_code",
+		"description": ""
+	},
+	"messages.data": {
+		"prefix": "messages.data",
+		"body": "messages[${1:}].data",
+		"description": ""
+	},
+	"dispatcher.broadcast_message": {
+		"prefix": "dispatcher.broadcast_message",
+		"body": "dispatcher.broadcast_message(${1:opcode}, ${2:encoded}, ${3:{presences}}, ${4:sender})",
+		"description": "Send a message to one or more presences. This may be called at any point in the match loop to give match participants information about match state changes. May also be useful inside the match join callback to send initial state to the user on successful join. Note that when broadcasting to multiple presences, if any presence is invalid then the broadcast will not occur"
+	},
+	"dispatcher.match_kick": {
+		"prefix": "dispatcher.match_kick",
+		"body": "dispatcher.match_kick(${1:{presences}})",
+		"description": "Removes participants from the match. Call at any point during the match loop to remove participants based on misbehavior or other game-specific rules"
+	},
+	"dispatcher.match_label_update": {
+		"prefix": "dispatcher.match_label_update",
+		"body": "dispatcher.match_label_update(${1:label})",
+		"description": "Sets a new label for the match"
+	},
+}
