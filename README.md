@@ -4,9 +4,13 @@ Nakama lua snippet for VSCode
 
 Copy `lua.json` to `C:\Users\[Username]\AppData\Roaming\Code\User\snippets`
 
-for `require` just type `nk`
+for `require` type `nk`
 
-for `functions reference` just type `nk.`
+for `functions reference` type `nk.`
+
+for `match` type `match`
+
+for `match handler reference` type `match_`
 
 # Function Reference
 - Accounts
@@ -30,3 +34,17 @@ for `functions reference` just type `nk.`
 - Users
 - Utils
 - Wallets
+
+# Match Handler Reference
+- MatchInit
+- MatchJoin
+- MatchJoinAttempt
+- MatchLeave
+- MatchLoop
+- MatchSignal
+- MatchTerminate
+
+# Match Runtime Reference
+- BroadcastMessage
+- MatchKick
+- MatchLabelUpdate
